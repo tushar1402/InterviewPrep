@@ -1,0 +1,39 @@
+public static long mergeSort(long arr[], int left, int right){
+        long count  = 0;
+
+        if(right > left){
+            int mid = (right + left) / 2;
+            mergeSort(arr,left,mid);
+            mergeSort(arr, mid + 1, right);
+            mergeSort(arr, left, right, mid);
+        }
+        return count;
+    }
+
+public static long merge(long[] arr, int left, int right, int mid){
+        long temp[] = new long[right - left + 1];
+        long count = 0;
+        int k = 0;
+        int start = left;
+        int end = mid + 1;
+
+        while(start <= mid && end <= right){
+            if(arr[start] <= arr[end])
+                temp[k++] = arr[start++];
+            else{
+                count += mid - start + 1;
+                temp[k++] = arr[end++];
+            }
+        }
+
+        while(start <= mid)
+            temp[k++] = arr[start++];
+        while(end <= right)
+            temp[k++] = arr[end++];
+
+        k = 0;
+
+        for(int i = left; i <= right; i++)
+            arr[i] = temp[k++];
+        return count;
+    }
