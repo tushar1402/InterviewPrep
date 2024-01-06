@@ -1,4 +1,5 @@
 import Product.Vehicle;
+import Product.VehicleType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,13 @@ public class Main {
     }
 
     private static List<Vehicle> addVehicles() {
-
+        List<Vehicle> vehicles = new ArrayList<>();
+        Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleId(1);
+        vehicle.setVehicleNumber(1234);
+        vehicle.setVehicleType(VehicleType.CAR);
+        vehicles.add(vehicle);
+        return vehicles;
     }
 
     private static List<Store> addStore(List<Vehicle> vehicles) {
